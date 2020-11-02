@@ -1,6 +1,5 @@
 FROM alpine:latest
 
-COPY entrypoint.sh /
 COPY dobackup.sh /
 
 RUN \
@@ -9,7 +8,7 @@ RUN \
 	pip3 install awscli && \
 	apk --purge -v del py-pip && \
 	rm /var/cache/apk/* && \
-	chmod +x /entrypoint.sh /dobackup.sh
+	chmod +x /dobackup.sh
 
 
-ENTRYPOINT /entrypoint.sh
+ENTRYPOINT /dobackup.sh
